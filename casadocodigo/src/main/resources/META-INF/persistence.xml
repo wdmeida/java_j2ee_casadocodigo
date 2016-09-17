@@ -5,7 +5,7 @@
              version="2.0">
 			
 			<persistence-unit name="casadocodigo-dev" transaction-type="JTA">
-				<jta-data-source>java:jboss/datasources/casadocodigoDS</jta-data-source>
+				<jta-data-source>java:casadocodigoDS</jta-data-source>
 				<properties>
 					<property name="hibernate.hbm2ddl.auto" value="update"/>
 					<property name="hibernate.show_sql" value="true" />

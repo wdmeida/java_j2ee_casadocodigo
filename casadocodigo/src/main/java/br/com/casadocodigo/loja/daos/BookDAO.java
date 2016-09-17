@@ -1,10 +1,12 @@
 package br.com.casadocodigo.loja.daos;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.com.casadocodigo.loja.model.Book;
 
+@Stateless
 public class BookDAO {
 	/*
 	 * A annotation abaixo, é utilizada para indicar, dentro de um container Java EE, a necessidade de injeção
