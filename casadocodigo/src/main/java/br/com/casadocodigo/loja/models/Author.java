@@ -1,4 +1,4 @@
-package br.com.casadocodigo.loja.model;
+package br.com.casadocodigo.loja.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,20 +9,23 @@ import javax.persistence.Id;
 public class Author {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String name;
 	
+	/**
+	 * @deprected Apenas para o uso dos frameworks.
+	 */
 	public Author(){}
 	
-	public Author(Long id) {
+	public Author(Integer id){
 		this.id = id;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -33,4 +36,10 @@ public class Author {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Author [id=" + id + ", name=" + name + "]";
+	}
+	
 }

@@ -1,4 +1,4 @@
-package br.com.casadocodigo.loja.model;
+package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,27 +8,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-//Define que a classe Book vai representar uma tabela no banco de dados.
+//Indica que a classe será mapeada para uma entidade (tabela) no banco de dados.
 @Entity
 public class Book {
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	private String title;;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String title;
 	private String description;
 	private int numberOfPages;
 	private BigDecimal price;
-	private List<Author> author = new ArrayList<>();
+	@ManyToMany
+	private List<Author> authors = new ArrayList<>();
 	
-	public void add(Author author){
-		this.author.add(author);
-	}
-	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(Long id) {
+	public void add(Author author){
+		this.authors.add(author);
+	}
+	
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -51,7 +54,7 @@ public class Book {
 	public BigDecimal getPrice() {
 		return price;
 	}
-
+	
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
@@ -62,5 +65,11 @@ public class Book {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", description=" + description + ", numberOfPages="
+				+ numberOfPages + ", price=" + price + "]";
 	}
 }

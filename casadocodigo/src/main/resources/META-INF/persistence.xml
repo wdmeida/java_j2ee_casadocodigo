@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-             version="2.0">
-			
-			<persistence-unit name="casadocodigo-dev" transaction-type="JTA">
-				<jta-data-source>java:casadocodigoDS</jta-data-source>
-				<properties>
-					<property name="hibernate.hbm2ddl.auto" value="update"/>
-					<property name="hibernate.show_sql" value="true" />
-					<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-				</properties>
-			</persistence-unit>
-
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				version="2.1"
+			 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+			 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
+	<persistence-unit name="casadocodigo-dev" transaction-type="JTA">
+		
+		<description>Dev persistence unit</description>
+		<!-- Indica qual implementação da JPA será utilizada no projeto. -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/casadocodigoDS</jta-data-source>
+	
+		<properties>
+			<!-- Indica que não é necessário ficar gerando tabelas novas no banco, todas as vezes em que mapeamos uma unidade. -->
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+		</properties>
+	
+	</persistence-unit>
 </persistence>

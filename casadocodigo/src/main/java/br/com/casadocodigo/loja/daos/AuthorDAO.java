@@ -2,21 +2,15 @@ package br.com.casadocodigo.loja.daos;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import br.com.casadocodigo.loja.model.Author;
+import br.com.casadocodigo.loja.models.Author;
 
-@Stateless
 public class AuthorDAO {
 	@PersistenceContext
 	private EntityManager manager;
-	
-	public void add(Author author){
-		manager.persist(author);
-	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Author> list(){
